@@ -72,7 +72,7 @@ public class Main extends JavaPlugin {
 					}
 				}
 			} else {
-				sender.sendMessage("Not enough arguments!");
+				sender.sendMessage("Not enough arguments!!!!!");
 			}
 		}
 
