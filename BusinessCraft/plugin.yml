@@ -1,0 +1,9 @@
+name: BusinessCraft
+main: com.arwrock.Main
+version: 0.0.1
+
+commands:
+    bc:
+        description: Basic BusinessCraft command.
+        usage: /<command>
+      
