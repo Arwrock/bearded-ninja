@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.bukkit.Bukkit;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.ConfigurationSection;
@@ -31,6 +32,7 @@ public class Main extends JavaPlugin {
 				e.printStackTrace();
 			}
 		}
+		
 	}
 
 	public void onDisable() {
@@ -40,6 +42,11 @@ public class Main extends JavaPlugin {
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
 		if (cmd.getName().equalsIgnoreCase("bc")) {
+			if(args.length == 3){
+				if(args[0].equalsIgnoreCase("dba")){
+					int compID = Integer.parseInt(args[1]);
+				}
+			}
 			if (args.length == 2) {
 				if (args[0].equalsIgnoreCase("create")) {
 					if (sender instanceof Player) {
@@ -53,10 +60,14 @@ public class Main extends JavaPlugin {
 							return true;
 						}
 						if (args[1].equalsIgnoreCase("sp")) {
-							businessConfig.set("businesses." + sender.getName()
-									+ "'s Company.id", businessNumber++);
-
-							reloadAll();
+							businessConfig.set( businessNumber+++"."+sender.getName()+"'s Company",sender.getName());
+							
+							try {
+								businessConfig.save(businesses);
+							} catch (IOException e) {
+								
+								e.printStackTrace();
+							}
 							return true;
 						}
 						if (args[1].equalsIgnoreCase("gp")) {
@@ -71,19 +82,13 @@ public class Main extends JavaPlugin {
 						return true;
 					}
 				}
-			} else {
-				sender.sendMessage("Not enough arguments!!!!!");
-				sender.sendMessage("Test33");
+			}
+			if(args.length == 1){
+				
 			}
 		}
 
 		return false;
 
 	}
-
-	public void reloadAll() {
-		businessesSaved = new ArrayList<String>(names.getKeys(false));
-		businessNumber = businessesSaved.size();
-	}
-
 }
