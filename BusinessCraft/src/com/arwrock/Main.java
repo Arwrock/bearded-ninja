@@ -60,6 +60,12 @@ public class Main extends JavaPlugin {
 							return true;
 						}
 						if (args[1].equalsIgnoreCase("sp")) {
+							
+							if(args[2] != null){
+								businessConfig.set(businessNumber+++"."+args[2]+"'s Company",sender.getName());
+								return true;
+							}
+							
 							businessConfig.set( businessNumber+++"."+sender.getName()+"'s Company",sender.getName());
 							
 							try {
